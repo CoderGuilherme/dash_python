@@ -14,6 +14,11 @@ df["Data"] = pd.to_datetime(df["Data"])
 df["Month"] = df["Data"].apply(lambda x: str(x.year) + "-" + str(x.month))
 
 # Função para obter as coordenadas específicas de cada oceano
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 75713ff248644f28e976f9811495ef5363e18073
 def localizacao(local):
     coordenadas = {
         "Pacifico_Sul": [-20.0, -50.0],
@@ -24,9 +29,11 @@ def localizacao(local):
     }
     return coordenadas.get(local, [-20.0, -110.0])
 
+
 # Sidebar para seleção de filtros
 month = st.sidebar.selectbox("Mês", ["Todos"] + df["Month"].unique().tolist())
-op_ocean = st.sidebar.selectbox("Oceanos", ["Todos"] + df["Localizacao"].unique().tolist())
+op_ocean = st.sidebar.selectbox(
+    "Oceanos", ["Todos"] + df["Localizacao"].unique().tolist())
 
 # Botão para limpar filtros
 if st.sidebar.button("Limpar Filtros"):
@@ -56,9 +63,18 @@ baseMap = folium.Map(
 )
 
 # Adicionando HeatMap ao mapa
+<<<<<<< HEAD
 HeatMap(data=df_filtered_date[['Latitude', 'Longitude', 'media_micro_plastico']].values, radius=15).add_to(baseMap)
 
 # Função para adicionar círculos ao mapa
+=======
+HeatMap(data=df_filtered_date[['Latitude', 'Longitude',
+        'media_micro_plastico']].values, radius=15).add_to(baseMap)
+
+# Função para adicionar círculos ao mapa
+
+
+>>>>>>> 75713ff248644f28e976f9811495ef5363e18073
 def plotMap(df):
     for i in range(len(df)):
         folium.Circle(
@@ -70,7 +86,12 @@ def plotMap(df):
                 f"<li><bold> Localização: {df.iloc[i]['Localizacao']}"
                 f"<li><bold> Condicao: {df.iloc[i]['Condicao']}"
                 f"<li><bold> Nivel Do PH: {df.iloc[i]['Nivel_de_pH']}"
+<<<<<<< HEAD
                 f"<li><bold> Qtd Kg coletados: {df.iloc[i]['media_micro_plastico']}"
+=======
+                f"<li><bold> Qtd Kg coletados: {
+                    df.iloc[i]['media_micro_plastico']}"
+>>>>>>> 75713ff248644f28e976f9811495ef5363e18073
             )
         ).add_to(baseMap)
     return baseMap
@@ -81,15 +102,25 @@ st.subheader(f'Analisando {op_ocean if op_ocean != "Todos" else "Todos"}')
 col1, col2, col3 = st.columns(3)
 
 with col1:
+<<<<<<< HEAD
     st.metric(label="Nível Médio de pH", value=f"{df_filtered_ocean['Nivel_de_pH'].mean():.2f}")
 
 with col2:
     st.metric(label="Total de Microplásticos Coletados", value=df_filtered_ocean['media_micro_plastico'].sum())
+=======
+    st.metric(label="Nível Médio de pH", value=f"{
+              df_filtered_ocean['Nivel_de_pH'].mean(): .2f}")
+
+with col2:
+    st.metric(label="Total de Microplásticos Coletados",
+              value=df_filtered_ocean['media_micro_plastico'].sum())
+>>>>>>> 75713ff248644f28e976f9811495ef5363e18073
 
 with col3:
     st.metric(label="Quantidade de Registros", value=len(df_filtered_ocean))
 
 # Plotando o mapa e gráfico de pizza lado a lado
+<<<<<<< HEAD
 col5, col6  = st.columns(2)
 with col5:
     st.subheader('Mapa de Calor')
@@ -100,16 +131,42 @@ with col6:
     condicao_counts = df_filtered_ocean['Condicao'].value_counts().reset_index()
     condicao_counts.columns = ['Condicao', 'counts']
     fig4 = px.pie(condicao_counts, names='Condicao', values='counts', title='Distribuição das Condições por Localização')
+=======
+col5 = st.columns(1)
+col6 = st.columns(1)
+
+with col5[0]:
+    st.subheader('Mapa de Calor')
+    folium_static(plotMap(df_filtered_date))
+
+with col6[0]:
+    st.subheader('Distribuição das Condições por Localização')
+    condicao_counts = df_filtered_ocean['Condicao'].value_counts(
+    ).reset_index()
+    condicao_counts.columns = ['Condicao', 'counts']
+    fig4 = px.pie(condicao_counts, names='Condicao', values='counts',
+                  title='Distribuição das Condições por Localização')
+>>>>>>> 75713ff248644f28e976f9811495ef5363e18073
     st.plotly_chart(fig4)
 
 # Gráfico de evolução mensal em uma única coluna
 col7 = st.columns(1)
 with col7[0]:
     st.subheader('Evolução Mensal da Coleta de Microplásticos')
+<<<<<<< HEAD
     df_filtered_ocean['YearMonth'] = df_filtered_ocean['Data'].dt.to_period('M')
     monthly_data = df_filtered_ocean.groupby('YearMonth').agg({'media_micro_plastico': 'mean'}).reset_index()
     monthly_data['YearMonth'] = monthly_data['YearMonth'].astype(str)
     fig3 = px.line(monthly_data, x='YearMonth', y='media_micro_plastico', title=f'Evolução Mensal da Coleta de Microplásticos - {op_ocean if op_ocean != "Todos" else "Todos"}', labels={'media_micro_plastico': 'Média de Microplásticos', 'YearMonth': 'Mês'})
+=======
+    df_filtered_ocean['YearMonth'] = df_filtered_ocean['Data'].dt.to_period(
+        'M')
+    monthly_data = df_filtered_ocean.groupby('YearMonth').agg(
+        {'media_micro_plastico': 'mean'}).reset_index()
+    monthly_data['YearMonth'] = monthly_data['YearMonth'].astype(str)
+    fig3 = px.line(monthly_data, x='YearMonth', y='media_micro_plastico', title=f'Evolução Mensal da Coleta de Microplásticos - {
+                   op_ocean if op_ocean != "Todos" else "Todos"}', labels={'media_micro_plastico': 'Média de Microplásticos', 'YearMonth': 'Mês'})
+>>>>>>> 75713ff248644f28e976f9811495ef5363e18073
     st.plotly_chart(fig3)
 
 # Gráficos de barra e scatter lado a lado
@@ -117,10 +174,20 @@ col7, col8 = st.columns(2)
 
 with col7:
     st.subheader('Média de Microplásticos por Localização')
+<<<<<<< HEAD
     fig1 = px.bar(df_filtered_ocean, x="Localizacao", y="media_micro_plastico", color="Localizacao", title="Média de Microplásticos por Localização")
+=======
+    fig1 = px.bar(df_filtered_ocean, x="Localizacao", y="media_micro_plastico",
+                  color="Localizacao", title="Média de Microplásticos por Localização")
+>>>>>>> 75713ff248644f28e976f9811495ef5363e18073
     st.plotly_chart(fig1)
 
 with col8:
     st.subheader('Nível de pH por Localização')
+<<<<<<< HEAD
     fig2 = px.scatter(df_filtered_ocean, x="Nivel_de_pH", y="Localizacao", size="media_micro_plastico", color="Condicao", title="Nível de pH por Localização")
+=======
+    fig2 = px.scatter(df_filtered_ocean, x="Nivel_de_pH", y="Localizacao",
+                      size="media_micro_plastico", color="Condicao", title="Nível de pH por Localização")
+>>>>>>> 75713ff248644f28e976f9811495ef5363e18073
     st.plotly_chart(fig2)
