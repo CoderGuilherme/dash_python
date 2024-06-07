@@ -19,32 +19,88 @@ openpyxl (para leitura de arquivos Excel)
 Instalação das Dependências
 
 Certifique-se de ter o Python e o pip instalados. Em seguida, instale as bibliotecas necessárias utilizando o comando abaixo no terminal ou prompt de comando:
+# Criando Ambiente Virtual pelo Terminal do VSCode
 
-```
-pip install pandas streamlit folium streamlit_folium plotly openpyxl
-```
+Neste guia, vamos mostrar como criar um ambiente virtual usando o terminal do VSCode.
 
-Passos para Rodar o Código
+## Passos para Rodar o Código
 Siga os passos abaixo para rodar o dashboard em outra máquina:
 
-1. Clonar ou Baixar o Projeto
+1. **Abra o VSCode:**
+   
+   Abra o Visual Studio Code.
+
+Clonar ou Baixar o Projeto
 Baixe o código do projeto ou clone o repositório do GitHub (se aplicável).
 
-2. Estrutura dos Arquivos
+Estrutura dos Arquivos
 Certifique-se de que os arquivos do projeto estejam organizados da seguinte forma:
 
     - data_registros.xlsx -------   # Arquivo de dados em Excel  
     - dashboard.py      ---------     # Código do dashboard
 
-3. Executar o Código
+
+
+2. **Abra o Terminal:**
+   
+   Abra o terminal do VSCode. Você pode fazer isso indo para o menu superior e selecionando `Terminal` -> `Novo Terminal`.
+
+3. **Crie o Ambiente Virtual:**
+Use o comando python -m venv para criar o ambiente virtual.
+Você pode substituir nome_do_ambiente pelo nome que desejar para o seu ambiente virtual.
+
+## RECOMENDADO - (nome_do_ambiente) = .venv
+
+```
+python -m venv nome_do_ambiente
+```
+
+4. **Ative o Ambiente Virtual:**
+caso esteja no prompt do powershell mude para o cmd (Command Prompt)
+que pode ser alterado pelo terminal 
+cliclando na seta ao lado do (+) e selecionando (Command Prompt)
+
+No Windows, utilize o comando:
+```
+nome_do_ambiente\Scripts\activate
+```
+
+# !Para saber se esta no ambiente virtual, note a diferença no caminho do arquivo no terminal
+**Desativado:**
+```
+C:\Users\Usuário\Desktop\dash_python>
+```
+**Ativo:**
+```
+(venv) C:\Users\Usuário\Desktop\dash_python>
+```
+# IMPORTANTE: execute todos os comandos apartir deste ponto dentro do ambiente virtual
+
+5.**Instale Dependências:**
+
+```
+pip install -r requirements.txt
+```
+OU
+```
+pip install pandas streamlit folium streamlit_folium plotly openpyxl
+```
+
+
+6. Executar o Código
 Abra um terminal ou prompt de comando na pasta onde o arquivo dashboard.py está localizado e execute o seguinte comando:
 ```
 streamlit run dashboard.py
 ```
-
-
 Isso iniciará o Streamlit e abrirá o dashboard no seu navegador padrão.
+Possivelmente solicitara um email de acesso é necessario que seja preenchido.
 
+7. Desativar o Ambiente Virtual:
+
+Quando terminar e quiser desativar o ambiente virtual, basta digitar:
+```
+deactivate
+```
 ---
 ---
 
