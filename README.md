@@ -8,7 +8,7 @@
 
 Este projeto utiliza a biblioteca Streamlit para criar um dashboard interativo que exibe dados sobre a coleta de microplásticos em diferentes oceanos. A visualização inclui um mapa de calor, gráficos interativos e informações gerais sobre os dados coletados.
 
-## REQUSITOS - INTRUÇÕES
+## REQUSITOS - INSTRUÇÕES
 Bibliotecas Python Necessárias
 pandas
 streamlit
