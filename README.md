@@ -8,7 +8,7 @@
 
 Este projeto utiliza a biblioteca Streamlit para criar um dashboard interativo que exibe dados sobre a coleta de microplásticos em diferentes oceanos. A visualização inclui um mapa de calor, gráficos interativos e informações gerais sobre os dados coletados.
 
-## REQUSITOS - INSTRUÇÕES
+## REQUISITOS - INSTRUÇÕES
 Bibliotecas Python Necessárias
 pandas
 streamlit
@@ -46,11 +46,17 @@ Certifique-se de que os arquivos do projeto estejam organizados da seguinte form
    Abra o terminal do VSCode. Você pode fazer isso indo para o menu superior e selecionando `Terminal` -> `Novo Terminal`.
 
 3. **Crie o Ambiente Virtual:**
+   1°
+```
+pip install virtualenv
+```
 Use o comando python -m venv para criar o ambiente virtual.
 Você pode substituir nome_do_ambiente pelo nome que desejar para o seu ambiente virtual.
 
-## RECOMENDADO - (nome_do_ambiente) = .venv
 
+
+**RECOMENDADO - (nome_do_ambiente) = .venv**
+2°
 ```
 python -m venv nome_do_ambiente
 ```
@@ -78,10 +84,6 @@ C:\Users\Usuário\Desktop\dash_python>
 
 5.**Instale Dependências:**
 
-```
-pip install -r requirements.txt
-```
-OU
 ```
 pip install pandas streamlit folium streamlit_folium plotly openpyxl
 ```
