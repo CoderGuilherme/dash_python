@@ -83,7 +83,12 @@ def plotMap(df):
         ).add_to(baseMap)
     return baseMap
 
-
+st.markdown(
+    """
+    <h1 style='color: #0992a8; font-size: 60px; text-align: center;'>SeaSense - Monitoramento</h1>
+    """, 
+    unsafe_allow_html=True
+)
 st.subheader(f'Analisando {op_ocean if op_ocean != "Todos" else "Todos"}')
 # Cards com informações gerais
 col1, col2, col3 = st.columns(3)
